@@ -1,0 +1,9 @@
+Fixing the connection problem of database .SQLExpress with asp.net MVC for VT Part8 project 
+Looks like it's failing trying to open a connection to SQL Server.
+You need to add a login to SQL Server for IIS APPPOOL\ASP.NET v4.0 and grant permissions to the database.
+In SSMS, under the server, expand Security, then right click Logins and select "New Login...".
+In the New Login dialog, enter the app pool as the login name and click "OK".
+You can then right click the login for the app pool, select Properties and select "User Mapping". 
+Check the appropriate database, and the appropriate roles. I think you could just select db_datareader and db_datawriter, 
+but I think you would still need to grant permissions to execute stored procedures if you do that through EF. 
+You can check the details for the roles here.

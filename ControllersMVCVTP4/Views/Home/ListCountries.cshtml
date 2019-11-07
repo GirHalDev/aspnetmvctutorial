@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "List Other Countries";
+}
+
+<h2>List Another Countries</h2>
+
+<ul>
+    @*Switching from HTML to C# code using @ symbol and using Razor Views*@
+    @foreach (string strCountries in (List<string>)ViewData["Countries"])
+    {
+        <li>@strCountries</li>
+    }
+
+</ul>
+
+
+

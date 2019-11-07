@@ -1,0 +1,16 @@
+﻿
+@{
+    //ViewBag and ViewData are a mechanisms to pass data from controller to view
+    ViewBag.Title = "Countries List";
+}
+
+<h2>Countries List</h2>
+<ul>
+    @*Switching from HTML to C# code using @ symbol and using Razor Views*@
+    @foreach(string strCountry in ViewBag.Countries)
+    {
+        <li>@strCountry</li>
+    }
+    
+</ul>
+

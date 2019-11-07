@@ -33,5 +33,15 @@ namespace ControllersMVCVTP4.Controllers
 
             return View(employee1);    
         }
+
+        //Hyperlinks using actionlink html helper
+        public ActionResult Index(int departmentId) //Hard coding
+        {
+            EmployeeContext employeeContext = new EmployeeContext();
+            //List<Employee> employees = employeeContext.Employees.ToList();
+            List<Employee> employees = employeeContext.Employees.Where(emp => emp.DepartmentId == departmentId).ToList();
+
+            return View(employees);
+        }
     }
 }

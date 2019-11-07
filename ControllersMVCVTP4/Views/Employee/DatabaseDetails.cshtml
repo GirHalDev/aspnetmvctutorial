@@ -4,27 +4,30 @@
     ViewBag.Title = "Employee Database";
 }
 
-<h2>Employee Database</h2>
-<table style="font-family:Arial">
-    <tr>
-        <td><b>Employee ID: </b></td>
-        <td>@Model.ID</td>
-    </tr>
-    <tr>
-        <td><b>First Name: </b></td>
-        <td>@Model.FirstName</td>
-    </tr>
-    <tr>
-        <td><b>Last Name: </b></td>
-        <td>@Model.LastName</td>
-    </tr>
-    <tr>
-        <td><b>Gender: </b></td>
-        <td>@Model.Gender</td>
-    </tr>
-    <tr>
-        <td><b>Department ID: </b></td>
-        <td>@Model.DepartmentId</td>
-    </tr>
+<div style="font-family:Arial">
+    <h2>Employee Database</h2>
+    <table>
+        <tr>
+            <td><b>Employee ID: </b></td>
+            <td>@Model.ID</td>
+        </tr>
+        <tr>
+            <td><b>First Name: </b></td>
+            <td>@Model.FirstName</td>
+        </tr>
+        <tr>
+            <td><b>Last Name: </b></td>
+            <td>@Model.LastName</td>
+        </tr>
+        <tr>
+            <td><b>Gender: </b></td>
+            <td>@Model.Gender</td>
+        </tr>
+        <tr>
+            <td><b>Department ID: </b></td>
+            <td>@Model.DepartmentId</td>
+        </tr>
 
-</table>
+    </table>
+    @Html.ActionLink("Back To List", "Index", new {departmentId = @Model.DepartmentId })
+</div>

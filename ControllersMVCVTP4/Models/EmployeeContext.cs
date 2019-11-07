@@ -12,5 +12,6 @@ namespace ControllersMVCVTP4.Models
     {
         //Using the property Employee, we get Database set of employees
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Department> Departments { get; set; }
     }
 }

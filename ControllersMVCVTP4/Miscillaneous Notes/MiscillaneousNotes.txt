@@ -7,3 +7,7 @@ You can then right click the login for the app pool, select Properties and selec
 Check the appropriate database, and the appropriate roles. I think you could just select db_datareader and db_datawriter, 
 but I think you would still need to grant permissions to execute stored procedures if you do that through EF. 
 You can check the details for the roles here.
+
+Fixing Execute method deniel from the SQL Management studio for asp.net MVC VT part 11 project
+just go to security -> schema -> dbo. Double click dbo, then click on permission tab -> (blue font)view database permission and 
+feel free to scroll for required fields like "execute". Choose grant or deny controls.

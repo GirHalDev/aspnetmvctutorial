@@ -16,5 +16,12 @@ namespace ControllersMVCVTP4.Controllers
             List<Employee> employees = employeeBusinesslayer.Employees.ToList();
             return View(employees);
         }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+           
+            return View();
+        }
     }
 }

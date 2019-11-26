@@ -6,5 +6,7 @@ Data access in mvc using entity framework VT Part8
 Generate hyperlinks using actionlink html helper VT Part9
 Working with Multiple tables VT Part10
 Using Business Object as model in MVC VTPart11
+Creating a view to insert data MVC VT Part12
+FormCollection in MVC VT Part13
 
 

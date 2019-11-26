@@ -11,3 +11,6 @@ You can check the details for the roles here.
 Fixing Execute method deniel from the SQL Management studio for asp.net MVC VT part 11 project
 just go to security -> schema -> dbo. Double click dbo, then click on permission tab -> (blue font)view database permission and 
 feel free to scroll for required fields like "execute". Choose grant or deny controls.
+
+Fixing Exception detail: Cannot insert the value NULL into column 'ID', table 'SampleSecondDBTrial.dbo.Employee'; column does not allow nulls. INSERT fails.
+The statement has been terminated. Adding Identity on ID column of the database table Employee with an option to increament by one.

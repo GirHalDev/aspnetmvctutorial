@@ -36,6 +36,11 @@ namespace BusinessLayers
                         employee.Gender = rdr["Gender"].ToString();
                         employee.Salary = rdr["Salary"].ToString();
                         employee.DepartmentId = rdr["DepartmentId"].ToString();
+                        if(!(rdr["DateOfBirth"] is DBNull))
+                        {
+                            employee.DateOfBirth = Convert.ToDateTime(rdr["DateOfBirth"]);
+                        }
+                       
 
                         employees.Add(employee);
 
@@ -81,6 +86,11 @@ namespace BusinessLayers
                 paramDepartmentId.ParameterName = "@DepartmentId";
                 paramDepartmentId.Value = employee.DepartmentId;
                 cmd.Parameters.Add(paramDepartmentId);
+
+                SqlParameter paramDateOfBirth = new SqlParameter();
+                paramDateOfBirth.ParameterName = "@DateOfBirth";
+                paramDateOfBirth.Value = employee.DateOfBirth;
+                cmd.Parameters.Add(paramDateOfBirth);
 
                 con.Open();
                 cmd.ExecuteNonQuery();

@@ -11,4 +11,6 @@ FormCollection in MVC VT Part13
 Mapping Request Data MVC VT Part14
 UpdateModel Function MVC VT Part15
 UpdateModel V/S TryUpdateModel MVC VT part16
+Editing a model in MVC VT Part 17
+Updating Data in MVC Part 18
 

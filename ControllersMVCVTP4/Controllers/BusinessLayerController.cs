@@ -132,5 +132,29 @@ namespace ControllersMVCVTP4.Controllers
             return View();
 
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            EmployeeBusinesslayer employeeBusinesslayer = new EmployeeBusinesslayer();
+            Employee employee = employeeBusinesslayer.Employees.Single(emp => emp.ID == id);
+            return View(employee);
+
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Employee employee)
+        {
+            //Model state checks if all the required fields decorated by the required attribute are filled
+            if(ModelState.IsValid)
+            {
+                EmployeeBusinesslayer employeeBusinesslayer = new EmployeeBusinesslayer();
+                employeeBusinesslayer.SaveEmployee(employee);
+                return RedirectToAction("Index");
+            }
+
+            return View(employee);
+          
+        }
     }
 }

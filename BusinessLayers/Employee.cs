@@ -7,10 +7,22 @@ using System.ComponentModel.DataAnnotations; //Data Annotations namespace
 
 namespace BusinessLayers
 {
-    public class Employee
+    //Using Interface to exclude the FirstName from updating 
+    //so that no outside debugging tool can update it malecously.
+    public interface IEmployee
+    {
+        int ID { get; set; }
+        string LastName { get; set; }
+        string Gender { get; set; }
+        string Salary { get; set; }
+        string DepartmentId { get; set; }
+        DateTime? DateOfBirth { get; set; }
+    }
+
+    public class Employee : IEmployee
     {
         public int ID { get; set; }
-        [Required]
+        //[Required]
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }

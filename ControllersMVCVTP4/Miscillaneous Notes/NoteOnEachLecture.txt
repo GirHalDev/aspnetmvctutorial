@@ -13,4 +13,9 @@ UpdateModel Function MVC VT Part15
 UpdateModel V/S TryUpdateModel MVC VT part16
 Editing a model in MVC VT Part 17
 Updating Data in MVC Part 18
-
+Unintended Updates MVC Part 19
+Preventing Unintended Updates MVC VT part 20
+Using Bind Attribute MvC VT Part 21
+Include and Exclude Properties from Model Using Interfaces MVC VT Part 22
+Deleting Database Record Using Get Request is Bad MVC Part 23
+Deleting Data Using Post Request MVC Part 24

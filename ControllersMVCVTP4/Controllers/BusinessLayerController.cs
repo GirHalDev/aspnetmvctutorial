@@ -20,7 +20,7 @@ namespace ControllersMVCVTP4.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-           
+
             return View();
         }
 
@@ -142,19 +142,129 @@ namespace ControllersMVCVTP4.Controllers
 
         }
 
+        //This model binding method is vernerable for hack using a tool like Fiddler
+        //[HttpPost]
+        //public ActionResult Edit(Employee employee)
+        //{
+        //    //Model state checks if all the required fields decorated by the required attribute are filled
+        //    if(ModelState.IsValid)
+        //    {
+        //        EmployeeBusinesslayer employeeBusinesslayer = new EmployeeBusinesslayer();
+        //        employeeBusinesslayer.SaveEmployee(employee);
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(employee);
+
+        //}
+
+        //Another method of model binding to avoid hacking or unintended updates
+        //[HttpPost]
+        //[ActionName("Edit")]
+        //public ActionResult Edit_Post(int id)
+        //{
+        //    EmployeeBusinesslayer employeeBusinesslayer = new EmployeeBusinesslayer();
+        //    Employee employee = employeeBusinesslayer.Employees.Single(x => x.ID == id);
+
+        //    //Include and Exclude list overloaded parameters to prevent model binding using a tool like Fiddler
+        //    UpdateModel(employee, new string[] { "ID", "LastName", "Gender", "Salary", "DepartementId", "DateOfBirth" });
+
+        //    //Exclude list parameter 
+        //    // UpdateModel(employee, null, null, new string[] { "FirstName" });
+
+        //    //Model state checks if all the required fields decorated by the required attribute are filled
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        employeeBusinesslayer.SaveEmployee(employee);
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(employee);
+
+        //}
+
+        //Another method of model binding to avoid hacking or unintended updates: Using Bind Attribute
+        //In this method the required field on Employee.cs FirstName can be deleted to avoid required field checking, or
+        //
+        //[HttpPost]
+        //[ActionName("Edit")]
+        //public ActionResult Edit_Post([Bind(Include="ID, LastName, Gender, Salary, DepartementId, DateOfBirth")]Employee employee)
+        //{
+        //    EmployeeBusinesslayer employeeBusinesslayer = new EmployeeBusinesslayer();
+        //    employee.FirstName = employeeBusinesslayer.Employees.Single(x => x.ID == employee.ID).FirstName;
+        //    employee.DepartmentId = employeeBusinesslayer.Employees.Single(x => x.ID == employee.ID).DepartmentId;
+
+        //    //Model state checks if all the required fields decorated by the required attribute are filled
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        employeeBusinesslayer.SaveEmployee(employee);
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(employee);
+
+        //}
+
+        //Another method of model binding to avoid hacking or unintended updates: Using Interface IEmployee
+        //In this method the required field on Employee.cs FirstName can be deleted to avoid required field checking,
         [HttpPost]
-        public ActionResult Edit(Employee employee)
+        [ActionName("Edit")]
+        public ActionResult Edit_Post(int id)
         {
+            EmployeeBusinesslayer employeeBusinesslayer = new EmployeeBusinesslayer();
+            Employee employee = employeeBusinesslayer.Employees.Single(x => x.ID == id);
+
+            UpdateModel<IEmployee>(employee);
+
             //Model state checks if all the required fields decorated by the required attribute are filled
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                EmployeeBusinesslayer employeeBusinesslayer = new EmployeeBusinesslayer();
+
                 employeeBusinesslayer.SaveEmployee(employee);
                 return RedirectToAction("Index");
             }
 
             return View(employee);
-          
+
+        }
+
+        ////An action method for delete using Get Request 
+        //public ActionResult Delete(int id)
+        //{
+        //    //< img src = "http://localhost/ControllersMVCVTP4/BusinessLayer/Delete/32" />
+        //    //This html tag with maliceous address can delete the data from the database
+        //    //Therefore Deleteing data using Get Request is not recommended by Microsoft
+        //    //In addition, when search engines index your page, they issue a GET request
+        //    //Which will delete the data
+
+        //    //In general, GET Request should be free of any side effects(It should not change the state)
+        //    //Delete should be performed using POST Request.
+
+        //    EmployeeBusinesslayer employeeBusinesslayer = new EmployeeBusinesslayer();
+        //    employeeBusinesslayer.DeleteEmployee(id);
+        //    return RedirectToAction("Index");
+
+        //}
+
+        //Deleting using POST Request
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            //< img src = "http://localhost/ControllersMVCVTP4/BusinessLayer/Delete/32" />
+            //This html tag with maliceous address can delete the data from the database
+            //Therefore Deleteing data using Get Request is not recommended by Microsoft
+            //In addition, when search engines index your page, they issue a GET request
+            //Which will delete the data
+
+            //In general, GET Request should be free of any side effects(It should not change the state)
+            //Delete should be performed using POST Request.
+
+            EmployeeBusinesslayer employeeBusinesslayer = new EmployeeBusinesslayer();
+            employeeBusinesslayer.DeleteEmployee(id);
+            return RedirectToAction("Index");
+
         }
     }
 }
